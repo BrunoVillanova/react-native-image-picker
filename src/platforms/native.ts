@@ -22,11 +22,12 @@ const DEFAULT_OPTIONS: ImageLibraryOptions & CameraOptions = {
   presentationStyle: 'pageSheet',
 };
 
+// @ts-expect-error
 const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
-const nativeImagePicler = isTurboModuleEnabled ?
-  require("./NativeImagePicker").default :
-  NativeModules.ImagePicker;
+const nativeImagePicler = isTurboModuleEnabled
+  ? require('./NativeImagePicker').default
+  : NativeModules.ImagePicker;
 
 export function camera(
   options: CameraOptions,
